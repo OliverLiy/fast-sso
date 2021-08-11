@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><!--引入thymeleaf-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="container">
+
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please Register</h2>
+        <label for="username" class="sr-only">username</label>
+        <input type="input" id="username" class="form-control" placeholder="username" required autofocus>
+        <label for="password" class="sr-only">password</label>
+        <input type="password" id="password" class="form-control" placeholder="password" required>
+        <button class="btn btn-lg btn-primary btn-block register" type="button" id="RegisterButton">Register</button>
+    </form>
+
+</div> <!-- /container -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script type="text/javascript" th:inline="javascript">
+    $(document).ready(function () {
+        $("#RegisterButton").click(function () {
+            let username = $("#username").val();
+            let password = $("#password").val();
+            let param=JSON.stringify({
+                username:username,
+                password:password
+            });
+            $.ajax({
+                url: "/fast-sso/checkRegister",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                data: param,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.code==200){
+                        alert("注册成功")
+                        window.location.href="/fast-sso/login"
+                    }else{
+                        alert("注册失败")
+                    }
+                }
+            })
+        })
+    });
+</script>
+</body>
+</html>
