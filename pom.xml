@@ -4,10 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.javayz</groupId>
+    <groupId>io.github.oliverliy</groupId>
     <artifactId>fast-sso</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
+    <name>fast-sso</name>
+    <url>https://github.com/OliverLiy/fast-sso</url>
+    <description>一个可快速接入的sso项目</description>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/OliverLiy/fast-sso</url>
+        <connection>https://github.com/OliverLiy/fast-sso.git</connection>
+    </scm>
     <modules>
         <module>fast-sso-client</module>
         <module>fast-sso-server</module>
@@ -89,18 +104,6 @@
             <build>
                 <pluginManagement>
                     <plugins>
-                        <plugin>
-                            <artifactId>maven-deploy-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <id>deploy</id>
-                                    <phase>deploy</phase>
-                                    <goals>
-                                        <goal>deploy</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
                         <plugin>
                             <groupId>org.sonatype.plugins</groupId>
                             <artifactId>nexus-staging-maven-plugin</artifactId>
