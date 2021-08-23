@@ -1,10 +1,12 @@
 package com.fast.sso.server.service.impl;
 
-import com.fast.sso.client.constant.ParamConstant;
+import com.fast.sso.client.entity.SsoUser;
+import com.fast.sso.client.executor.SsoExecutor;
 import com.fast.sso.client.model.Result;
 import com.fast.sso.client.model.ResultCode;
 import com.fast.sso.client.util.MD5Util;
 import com.fast.sso.server.entity.UserDO;
+import com.fast.sso.server.entity.UserVO;
 import com.fast.sso.server.mapper.UserMapper;
 import com.fast.sso.server.service.SsoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 /**
@@ -23,11 +27,14 @@ import java.util.UUID;
 @Service
 public class SsoServiceImpl implements SsoService {
 
+    @Autowired
+    private SsoExecutor ssoExecutor;
+
     @Resource
     private UserMapper userMapper;
 
     @Override
-    public UserDO checkLogin(String username, String password, String remember) throws Exception {
+    public UserDO checkLogin(String username, String password) throws Exception {
         UserDO params=new UserDO();
         params.setUsername(username);
         params.setPassword(MD5Util.get32BitMD5(password));
@@ -53,5 +60,21 @@ public class SsoServiceImpl implements SsoService {
         params.setUserId(UUID.randomUUID().toString().replaceAll("-",""));
         userMapper.insert(params);
         return Result.success();
+    }
+
+    @Override
+    public Result getUserInfo(HttpServletRequest request, HttpServletResponse response) {
+        SsoUser user = ssoExecutor.getUser(request, response);
+        if (user==null){
+            return Result.failure(ResultCode.DATA_NOT_EXISTS);
+        }
+        String userId = user.getUserId();
+        UserDO param=new UserDO();
+        param.setUserId(userId);
+        UserDO userDO = userMapper.selectByRecord(param);
+        UserVO userVO=new UserVO();
+        userVO.setUserId(userDO.getUserId());
+        userVO.setUsername(userDO.getUsername());
+        return Result.success(userVO);
     }
 }

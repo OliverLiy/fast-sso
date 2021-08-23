@@ -25,7 +25,6 @@ public class UserInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("server preHandle");
         SsoUser ssoUser = ssoExecutor.checkLogin(request,response);
         String jumpUrl=request.getRequestURL().toString();
         if (ssoUser==null){

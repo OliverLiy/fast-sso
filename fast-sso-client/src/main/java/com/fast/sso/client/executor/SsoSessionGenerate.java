@@ -1,6 +1,7 @@
 package com.fast.sso.client.executor;
 
 import com.fast.sso.client.entity.SsoUser;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author by:ly
@@ -16,11 +17,23 @@ public class SsoSessionGenerate {
      * @return
      */
     public static String generateSessionId(SsoUser ssoUser){
-        String sessionId=ssoUser.getUserId()+"_"+ssoUser.getUserName()+"_"+System.currentTimeMillis();
+        String sessionId=ssoUser.getUserId()+"_"+System.currentTimeMillis();
         return sessionId;
     }
 
-    public static String getSessionId(String sessionId){
-        return null;
+    /**
+     * 根据sessionId获取到当前用户
+     * @param sessionId
+     * @return
+     */
+    public static SsoUser getSessionUser(String sessionId){
+        if (StringUtils.isEmpty(sessionId)){
+            return null;
+        }else {
+            SsoUser user=new SsoUser();
+            String[] split = sessionId.split("_");
+            user.setUserId(split[0]);
+            return user;
+        }
     }
 }

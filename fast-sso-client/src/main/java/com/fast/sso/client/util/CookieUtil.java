@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class CookieUtil {
 
     // Cookie时间
-    private static final int COOKIE_AGE = 60*60*24;
+    private static final int COOKIE_AGE = 60*60*2;
+    /**
+     * 记住我时的Cookie时间
+     */
+    private static final int REMEMBER_COOKIE_AGE=60*60*24;
     // 保存路径,根路径
     private static final String COOKIE_PATH = "/";
 
@@ -37,8 +41,13 @@ public class CookieUtil {
      * @param key
      * @param value
      */
-    public static void set(HttpServletResponse response, String key, String value) {
-        set(response, key, value, null, COOKIE_PATH, COOKIE_AGE, true);
+    public static void set(HttpServletResponse response, String key, String value,boolean remember) {
+        if (remember){
+            set(response, key, value, null, COOKIE_PATH, REMEMBER_COOKIE_AGE, true);
+        }else {
+            set(response, key, value, null, COOKIE_PATH, COOKIE_AGE, true);
+        }
+
     }
 
     /**

@@ -18,6 +18,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     UserInterceptor userInterceptor;
 
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(userInterceptor)
                 .addPathPatterns("/**");

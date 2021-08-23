@@ -23,7 +23,11 @@ public class SsoExecutor {
 
     private Jedis jedis= JedisUtil.getJedis();
 
-    private int expireMinute=120;
+    private int expireMinute=60*2;
+    /**
+     * 记住我时24小时失效
+     */
+    private int rememberExpireMinute=60*24;
 
     public void setExpireMinute(int expireMinute) {
         if (expireMinute<30){
@@ -40,13 +44,18 @@ public class SsoExecutor {
      * 处理登录逻辑
      * @param ssoUser
      */
-    public void login(SsoUser ssoUser, HttpServletRequest request, HttpServletResponse response){
+    public void login(SsoUser ssoUser,boolean remember, HttpServletRequest request, HttpServletResponse response){
         String sessionId = SsoSessionGenerate.generateSessionId(ssoUser);
         String userJson = JSON.toJSONString(ssoUser);
         //将session绑定到redis中
-        jedis.setex(sessionId, expireMinute * 60, userJson);
+        if (remember){
+            jedis.setex(sessionId, rememberExpireMinute * 60, userJson);
+        }else {
+            jedis.setex(sessionId, expireMinute * 60, userJson);
+        }
         //将值塞到cookie中
-        CookieUtil.set(response, ParamConstant.cookiePrefix,sessionId);
+        CookieUtil.set(response, ParamConstant.cookiePrefix,sessionId,remember);
+
     }
 
     /**
@@ -71,11 +80,32 @@ public class SsoExecutor {
 
     /**
      * 登出
-     * @param sessionId
+     * @param request
+     * @param response
      */
-    public void logout(String sessionId,HttpServletRequest request,HttpServletResponse response){
+    public boolean logout(HttpServletRequest request,HttpServletResponse response){
+        String sessionId = CookieUtil.get(request, ParamConstant.cookiePrefix);
+        if (StringUtils.isEmpty(sessionId)){
+            return false;
+        }
         jedis.del(sessionId);
         CookieUtil.remove(request,response, ParamConstant.cookiePrefix);
+        return true;
+    }
+
+    /**
+     * 获取当前登录用户
+      * @param request
+     * @param response
+     * @return
+     */
+    public SsoUser getUser(HttpServletRequest request,HttpServletResponse response){
+        String sessionId = CookieUtil.get(request, ParamConstant.cookiePrefix);
+        if (StringUtils.isNotEmpty(sessionId)){
+            SsoUser sessionUser = SsoSessionGenerate.getSessionUser(sessionId);
+            return sessionUser;
+        }
+        return null;
     }
 
 }
