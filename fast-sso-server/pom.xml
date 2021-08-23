@@ -5,19 +5,19 @@
     <parent>
         <artifactId>fast-sso</artifactId>
         <groupId>io.github.oliverliy</groupId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>fast-sso-server</artifactId>
     <groupId>io.github.oliverliy</groupId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <dependencies>
         <dependency>
             <artifactId>fast-sso-client</artifactId>
             <groupId>io.github.oliverliy</groupId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
