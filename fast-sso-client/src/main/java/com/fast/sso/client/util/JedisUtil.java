@@ -1,5 +1,6 @@
 package com.fast.sso.client.util;
 
+import org.apache.commons.lang3.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -22,13 +23,19 @@ public class JedisUtil {
         int port = Integer.parseInt(rb.getString("redis.port"));
         int maxidle = Integer.parseInt(rb.getString("redis.maxidle"));
         int maxtotal= Integer.parseInt(rb.getString("redis.maxtotal"));
+        String password=rb.getString("redis.password");
         //配置线程池
         JedisPoolConfig config=new JedisPoolConfig();
         //设置最大空闲等待数
         config.setMaxIdle(maxidle);
         //设置最大连接数
         config.setMaxTotal(maxtotal);
-        jedisPool=new JedisPool(config,host,port);
+        if (StringUtils.isEmpty(password)){
+            jedisPool=new JedisPool(config,host,port,1000);
+        }else {
+            jedisPool=new JedisPool(config,host,port,1000,password);
+        }
+
     }
     //通过该方法获取jedis对象
     public static Jedis getJedis(){
