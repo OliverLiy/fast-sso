@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * @author by:ly
  * @ClassName: UserVO
- * @Description: TODO
+ * @Description: UserVO
  * @Date: 2021/8/19 20:30
  **/
 @Data

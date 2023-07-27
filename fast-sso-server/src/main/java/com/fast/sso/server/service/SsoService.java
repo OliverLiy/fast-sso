@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author by:ly
  * @ClassName: SsoService
- * @Description: TODO Sso逻辑service
+ * @Description: Sso逻辑service
  * @Date: 2021/8/3 10:00
  **/
 public interface SsoService {

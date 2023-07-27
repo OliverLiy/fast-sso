@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author by:ly
  * @ClassName: GlobalExceptionController
- * @Description: TODO
+ * @Description: GlobalExceptionController
  * @Date: 2021/7/14 16:31
  **/
 

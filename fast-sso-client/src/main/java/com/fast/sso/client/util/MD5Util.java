@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 /**
  * @author by:ly
  * @ClassName: MD5Utils
- * @Description: TODO md5工具类
+ * @Description:  md5工具类
  * @Date: 2021/7/7 15:07
  **/
 public class MD5Util {

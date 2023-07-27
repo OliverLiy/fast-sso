@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @author by:ly
  * @ClassName: SsoUser
- * @Description: TODO
+ * @Description: SsoUser
  * @Date: 2021/7/15 10:57
  **/
 @Data

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author by:ly
  * @ClassName: SsoExecutor
- * @Description: TODO sso逻辑核心处理类
+ * @Description:  sso逻辑核心处理类
  * @Date: 2021/7/14 20:25
  **/
 public class SsoExecutor {

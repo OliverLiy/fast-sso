@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * @author by:ly
  * @ClassName: SsoController
- * @Description: TODO SsoController
+ * @Description: SsoController
  * @Date: 2021/7/22 19:55
  **/
 @Controller

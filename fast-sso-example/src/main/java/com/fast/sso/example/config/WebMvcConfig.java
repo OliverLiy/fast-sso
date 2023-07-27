@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * @author by:ly
  * @ClassName: WebMvcConfig
- * @Description: TODO
+ * @Description: WebMvcConfig
  * @Date: 2021/7/14 18:57
  **/
 @Configuration

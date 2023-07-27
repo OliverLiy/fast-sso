@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author by:ly
  * @ClassName: SsoServerApplication
- * @Description: TODO
+ * @Description: SsoServerApplication
  * @Date: 2021/7/13 17:05
  **/
 @SpringBootApplication

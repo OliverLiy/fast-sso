@@ -3,7 +3,7 @@ package com.fast.sso.client.constant;
 /**
  * @author by:ly
  * @ClassName: ParamConstant
- * @Description: TODO
+ * @Description: ParamConstant
  * @Date: 2021/7/21 19:50
  **/
 public class ParamConstant {

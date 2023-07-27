@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author by:ly
  * @ClassName: UserInterceptor
- * @Description: TODO
+ * @Description: UserInterceptor
  * @Date: 2021/7/14 19:47
  **/
 public class UserInterceptor implements HandlerInterceptor {

@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * @author by:ly
  * @ClassName: SsoGenerate
- * @Description: TODO session生成，分解工具类
+ * @Description: session生成，分解工具类
  * @Date: 2021/7/15 14:01
  **/
 public class SsoSessionGenerate {

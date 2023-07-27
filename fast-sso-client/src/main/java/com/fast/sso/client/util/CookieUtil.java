@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author by:ly
  * @ClassName: CookieUtil
- * @Description: TODO
+ * @Description: CookieUtil
  * @Date: 2021/7/21 20:31
  **/
 public class CookieUtil {

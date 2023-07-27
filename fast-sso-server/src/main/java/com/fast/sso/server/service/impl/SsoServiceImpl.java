@@ -21,7 +21,7 @@ import java.util.UUID;
 /**
  * @author by:ly
  * @ClassName: SsoServiceImpl
- * @Description: TODO
+ * @Description: SsoServiceImpl
  * @Date: 2021/8/3 10:00
  **/
 @Service

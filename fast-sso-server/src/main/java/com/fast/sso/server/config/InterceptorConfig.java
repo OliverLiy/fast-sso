@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author by:ly
  * @ClassName: InterceptorConfig
- * @Description: TODO
+ * @Description: InterceptorConfig
  * @Date: 2021/7/27 19:47
  **/
 @Configuration

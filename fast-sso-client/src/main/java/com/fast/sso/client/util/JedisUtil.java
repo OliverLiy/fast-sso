@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 /**
  * @author by:ly
  * @ClassName: JedisUtil
- * @Description: TODO
+ * @Description: JedisUtil
  * @Date: 2021/7/15 10:53
  **/
 public class JedisUtil {

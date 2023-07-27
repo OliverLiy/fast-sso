@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * @author by:ly
  * @ClassName: UserWebMvc
- * @Description: TODO
+ * @Description: UserWebMvc
  * @Date: 2021/7/14 16:18
  **/
 @Configuration

@@ -3,7 +3,7 @@ package com.fast.sso.client.model;
 /**
  * @author by:ly
  * @ClassName: ResultCode
- * @Description: TODO
+ * @Description: ResultCode
  * @Date: 2021/7/14 15:59
  **/
 public enum ResultCode {
